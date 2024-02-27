@@ -108,6 +108,7 @@
 		B107C0A92B8248BC0016FD7B = {
 			isa = PBXGroup;
 			children = (
+				B12AE1BB2B8DA5750062F93B /* docs */,
 				B107C0B42B8248BC0016FD7B /* DealDash */,
 				B107C0C52B8248BD0016FD7B /* DealDashTests */,
 				B107C0CF2B8248BD0016FD7B /* DealDashUITests */,
@@ -190,6 +191,13 @@
 				B12AE1B72B8D92180062F93B /* Product.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B12AE1BB2B8DA5750062F93B /* docs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 		B16997162B824AE600276991 /* Models */ = {
