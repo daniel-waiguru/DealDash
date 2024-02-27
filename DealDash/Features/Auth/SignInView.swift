@@ -48,6 +48,7 @@ struct SignInView: View {
             }
          }
         .alert(isPresented: $viewModel.hasError, error: viewModel.state.errorMessage) {}
+        .navigationTitle("Sign In")
     }
 }
 

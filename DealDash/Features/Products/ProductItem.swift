@@ -26,7 +26,7 @@ struct ProductItem: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text(product.title)
                     .lineLimit(2)
-                    .font(.title3.bold())
+                    .font(.headline.bold())
                 
                 HStack {
                     Image(systemName: "star.fill")
