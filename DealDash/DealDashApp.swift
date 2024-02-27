@@ -19,11 +19,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct DealDashApp: App {
     @StateObject var sessionHandler: SessionHandler = SessionHandler()
+    @StateObject var navigationRouter: NavigationRouter = NavigationRouter()
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                SignInView()
-                    .environmentObject(sessionHandler)
+                switch sessionHandler.session {
+                case .loggedIn(_):
+                    ProductsView()
+                        .environmentObject(navigationRouter)
+                case .loggedOut:
+                    SignInView()
+                        .environmentObject(sessionHandler)
+                        .environmentObject(navigationRouter)
+                }
             }
         }
     }

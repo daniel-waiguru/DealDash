@@ -9,6 +9,7 @@ import Foundation
 
 enum ApiEndpoint {
     case signIn(data: Data?)
+    case getProducts
 }
 
 extension ApiEndpoint {
@@ -18,12 +19,16 @@ extension ApiEndpoint {
         switch self {
         case .signIn:
             return "auth/login"
+        case .getProducts:
+            return "products"
         }
     }
     var methodType: MethodType {
         switch self {
         case .signIn(let signRequest):
             return .POST(data: signRequest)
+        case .getProducts:
+            return .GET
         }
     }
 

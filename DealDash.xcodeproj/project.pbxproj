@@ -13,6 +13,9 @@
 		B107C0C72B8248BD0016FD7B /* DealDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0C62B8248BD0016FD7B /* DealDashTests.swift */; };
 		B107C0D12B8248BD0016FD7B /* DealDashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0D02B8248BD0016FD7B /* DealDashUITests.swift */; };
 		B107C0D32B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0D22B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift */; };
+		B12AE1B52B8D90D30062F93B /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B42B8D90D30062F93B /* ProductsViewModel.swift */; };
+		B12AE1B82B8D92180062F93B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B72B8D92180062F93B /* Product.swift */; };
+		B12AE1BA2B8D95920062F93B /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B92B8D95920062F93B /* ProductItem.swift */; };
 		B16997152B824A4F00276991 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16997142B824A4E00276991 /* SignInView.swift */; };
 		B16997182B824B0400276991 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16997172B824B0400276991 /* SignInRequest.swift */; };
 		B169971A2B824BD600276991 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16997192B824BD600276991 /* SignInViewModel.swift */; };
@@ -23,6 +26,8 @@
 		B16997272B825C4700276991 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16997262B825C4700276991 /* NetworkingService.swift */; };
 		B16997292B825C6300276991 /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16997282B825C6300276991 /* ApiEndpoint.swift */; };
 		B16EA5492B84616300F7D830 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = B16EA5482B84616300F7D830 /* netfox */; };
+		B16EA54C2B8463F400F7D830 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16EA54B2B8463F400F7D830 /* ProductsView.swift */; };
+		B16EA54E2B8464F200F7D830 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16EA54D2B8464F200F7D830 /* NavigationRouter.swift */; };
 		B17798002B8456400044400E /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17797FF2B8456400044400E /* SignInResponse.swift */; };
 		B17798062B845A090044400E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17798052B845A090044400E /* Constants.swift */; };
 		B17798082B845A690044400E /* SessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17798072B845A690044400E /* SessionHandler.swift */; };
@@ -55,6 +60,9 @@
 		B107C0CC2B8248BD0016FD7B /* DealDashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DealDashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B107C0D02B8248BD0016FD7B /* DealDashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDashUITests.swift; sourceTree = "<group>"; };
 		B107C0D22B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B12AE1B42B8D90D30062F93B /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		B12AE1B72B8D92180062F93B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B12AE1B92B8D95920062F93B /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		B16997142B824A4E00276991 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		B16997172B824B0400276991 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
 		B16997192B824BD600276991 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +72,8 @@
 		B16997232B825B2B00276991 /* ResultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWrapper.swift; sourceTree = "<group>"; };
 		B16997262B825C4700276991 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		B16997282B825C6300276991 /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
+		B16EA54B2B8463F400F7D830 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		B16EA54D2B8464F200F7D830 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		B17797FF2B8456400044400E /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		B17798052B845A090044400E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B17798072B845A690044400E /* SessionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHandler.swift; sourceTree = "<group>"; };
@@ -156,6 +166,7 @@
 		B107C0DF2B8249760016FD7B /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				B16EA54A2B8463E400F7D830 /* Products */,
 				B16997222B825B0900276991 /* State */,
 				B169971B2B824D3700276991 /* Components */,
 				B107C0E02B82497D0016FD7B /* Auth */,
@@ -171,6 +182,14 @@
 				B16997192B824BD600276991 /* SignInViewModel.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		B12AE1B62B8D92030062F93B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B12AE1B72B8D92180062F93B /* Product.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B16997162B824AE600276991 /* Models */ = {
@@ -209,11 +228,23 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		B16EA54A2B8463E400F7D830 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B12AE1B62B8D92030062F93B /* Models */,
+				B16EA54B2B8463F400F7D830 /* ProductsView.swift */,
+				B12AE1B42B8D90D30062F93B /* ProductsViewModel.swift */,
+				B12AE1B92B8D95920062F93B /* ProductItem.swift */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
 		B17798042B8459FB0044400E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				B17798072B845A690044400E /* SessionHandler.swift */,
 				B17798052B845A090044400E /* Constants.swift */,
+				B16EA54D2B8464F200F7D830 /* NavigationRouter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -354,14 +385,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B16EA54C2B8463F400F7D830 /* ProductsView.swift in Sources */,
 				B16997152B824A4F00276991 /* SignInView.swift in Sources */,
+				B12AE1B52B8D90D30062F93B /* ProductsViewModel.swift in Sources */,
 				B169971D2B824D5D00276991 /* PasswordTextField.swift in Sources */,
 				B169971F2B82521700276991 /* ITextField.swift in Sources */,
+				B12AE1B82B8D92180062F93B /* Product.swift in Sources */,
 				B107C0B62B8248BC0016FD7B /* DealDashApp.swift in Sources */,
 				B16997272B825C4700276991 /* NetworkingService.swift in Sources */,
 				B17798002B8456400044400E /* SignInResponse.swift in Sources */,
 				B17798062B845A090044400E /* Constants.swift in Sources */,
+				B16EA54E2B8464F200F7D830 /* NavigationRouter.swift in Sources */,
 				B16997182B824B0400276991 /* SignInRequest.swift in Sources */,
+				B12AE1BA2B8D95920062F93B /* ProductItem.swift in Sources */,
 				B17798082B845A690044400E /* SessionHandler.swift in Sources */,
 				B16997292B825C6300276991 /* ApiEndpoint.swift in Sources */,
 				B16997242B825B2B00276991 /* ResultWrapper.swift in Sources */,
