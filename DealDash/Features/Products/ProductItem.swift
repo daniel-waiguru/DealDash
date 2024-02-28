@@ -9,37 +9,53 @@ import SwiftUI
 
 struct ProductItem: View {
     let product: Product
+    @State private var isLiked = false
     var body: some View {
-        VStack( spacing: 5) {
-            AsyncImage(url: .init(string: product.image)) { image in
-                image
-                    .resizable()
-                    .clipped()
-                    .background(.clear)
+        ZStack {
             
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(height: 150)
-            .padding()
-    
-            VStack(alignment: .leading, spacing: 5) {
-                Text(product.title)
-                    .lineLimit(2)
-                    .font(.headline.bold())
+            VStack(spacing: 5) {
+                AsyncImage(url: .init(string: product.image)) { image in
+                    image
+                        .resizable()
+                        .clipped()
+                        .background(.clear)
                 
-                HStack {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.orange)
-                    Text(String(product.rating.rate))
-                    Text("(\(product.rating.count))")
+                } placeholder: {
+                    ProgressView()
                 }
-                Text(product.price, format: .currency(code: "Ksh"))
-                    .fontWeight(.bold)
+                .frame(height: 150)
+                .padding()
+        
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(product.title)
+                        .lineLimit(2)
+                        .font(.headline.bold())
+                    
+                    HStack {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.orange)
+                        Text(String(product.rating.rate))
+                        Text("(\(product.rating.count))")
+                    }
+                    Text(product.price, format: .currency(code: "Ksh"))
+                        .fontWeight(.bold)
+                }
+                .padding(.trailing, 4)
+                .padding(.leading, 4)
+                .padding(.bottom, 5)
             }
-            .padding(.trailing, 4)
-            .padding(.leading, 4)
-            .padding(.bottom, 5)
+            Button {
+                debugPrint("Like clicked")
+                isLiked.toggle()
+            } label: {
+                Image(systemName: isLiked ? "heart.fill" : "heart")
+            }
+            .padding(6)
+            .background(.taintedBackground)
+            .clipShape(Circle())
+            .position(x: 155, y: 15)
+            
+            
         }
         .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(.background).shadow(color: .text.opacity(0.1), radius: 1, x: 0, y: 1))
 
