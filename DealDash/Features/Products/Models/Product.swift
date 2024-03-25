@@ -6,7 +6,11 @@
 //
 
 import Foundation
-struct Product: Codable {
+struct Product: Codable, Equatable {
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: Int
     let title: String
     let price: Double
