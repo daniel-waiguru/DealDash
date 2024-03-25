@@ -31,6 +31,7 @@ struct ProductItem: View {
                         .lineLimit(2)
                         .font(.headline.bold())
                         .foregroundColor(.text)
+                        .multilineTextAlignment(.leading)
                     
                     HStack {
                         Image(systemName: "star.fill")
@@ -57,7 +58,7 @@ struct ProductItem: View {
             .padding(6)
             .background(.taintedBackground)
             .clipShape(Circle())
-            .position(x: 155, y: 15)
+            .position(x: 175, y: 15)
             
             
         }
