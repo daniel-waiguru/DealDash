@@ -30,15 +30,19 @@ struct ProductItem: View {
                     Text(product.title)
                         .lineLimit(2)
                         .font(.headline.bold())
+                        .foregroundColor(.text)
                     
                     HStack {
                         Image(systemName: "star.fill")
                             .foregroundColor(.orange)
                         Text(String(product.rating.rate))
+                            .foregroundColor(.text)
                         Text("(\(product.rating.count))")
+                            .foregroundColor(.text)
                     }
                     Text(product.price, format: .currency(code: "Ksh"))
                         .fontWeight(.bold)
+                        .foregroundColor(.text)
                 }
                 .padding(.trailing, 4)
                 .padding(.leading, 4)
