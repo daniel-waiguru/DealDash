@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CartItem: View {
+struct CartItemView: View {
     let cartProduct: CartProduct
     let action: (CartAction) -> Void
     var body: some View {
@@ -46,9 +46,10 @@ struct CartItem: View {
             }
         }
         .padding()
+        .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(.background).shadow(color: .text.opacity(0.1), radius: 1, x: 0, y: 1))
     }
 }
 
 #Preview {
-    CartItem(cartProduct: CartProduct.previewCartProduct, action: { _ in })
+    CartItemView(cartProduct: CartProduct.previewCartProduct, action: { _ in })
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ProductsView: View {
     @StateObject private var viewModel = ProductsViewModel()
@@ -13,11 +14,14 @@ struct ProductsView: View {
     @State private var showSettings: Bool = false
     @State private var showCart: Bool = false
     private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
+    @Query private var cartItems: [CartProduct]
     var body: some View {
         ScrollView {
             LazyVGrid(columns: adaptiveColumn, spacing: 12) {
                 ForEach(viewModel.products, id: \.id) { product in
-                    NavigationLink(destination: {ProductInfoView(productId: product.id)}) {
+                    NavigationLink(destination: {
+                        ProductInfoView(productId: product.id)
+                    }) {
                         ProductItem(product: product)
                     }
                 }
@@ -42,6 +46,11 @@ struct ProductsView: View {
                 } label: {
                     Image(systemName: "cart.fill")
                 }
+                .overlay(alignment: .topTrailing) {
+                    if cartItems.count > 0 {
+                        badge
+                    }
+                }
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -57,7 +66,22 @@ struct ProductsView: View {
         }
     }
 }
+private extension ProductsView {
+    var badge: some View {
+        Text("\(cartItems.count)")
+            .foregroundColor(.white)
+            .padding(6)
+            .font(.caption2.bold())
+            .monospacedDigit()
+            .background(
+                Circle()
+                    .fill(.red)
+            )
+            .offset(x: 2, y: -2)
+    }
+}
 
 #Preview {
     ProductsView()
+        .environmentObject(NavigationRouter())
 }

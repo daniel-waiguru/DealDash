@@ -6,15 +6,30 @@
 //
 
 import Foundation
-struct CartProduct {
+import SwiftData
+
+@Model
+final class CartProduct {
+    @Attribute(.unique)
     let id: Int
     let title: String
     let price: Double
-    let count: Int
+    var count: Int
     let image: String
     
     var totalPrice: Double {
         price * Double(count)
+    }
+    init(id: Int, title: String, price: Double, count: Int, image: String) {
+        self.id = id
+        self.title = title
+        self.price = price
+        self.count = count
+        self.image = image
+    }
+    
+    func updateCount(newCount: Int) {
+        count = newCount
     }
 }
 
