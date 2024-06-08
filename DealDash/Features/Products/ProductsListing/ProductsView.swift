@@ -11,6 +11,7 @@ struct ProductsView: View {
     @StateObject private var viewModel = ProductsViewModel()
     @State private var showDetail: Bool = false
     @State private var showSettings: Bool = false
+    @State private var showCart: Bool = false
     private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
     var body: some View {
         ScrollView {
@@ -37,7 +38,7 @@ struct ProductsView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    
+                    showCart.toggle()
                 } label: {
                     Image(systemName: "cart.fill")
                 }
@@ -51,6 +52,9 @@ struct ProductsView: View {
             }
         }
         .navigationDestination(isPresented: $showSettings, destination: { SettingsView() })
+        .navigationDestination(isPresented: $showCart) {
+            CartView()
+        }
     }
 }
 
