@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductsView: View {
     @StateObject private var viewModel = ProductsViewModel()
     @State private var showDetail: Bool = false
+    @State private var showSettings: Bool = false
     private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
     var body: some View {
         ScrollView {
@@ -36,12 +37,20 @@ struct ProductsView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    showDetail.toggle()
+                    
                 } label: {
                     Image(systemName: "cart.fill")
                 }
             }
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showSettings.toggle()
+                } label: {
+                    Image(systemName: "person.2.badge.gearshape.fill")
+                }
+            }
         }
+        .navigationDestination(isPresented: $showSettings, destination: { SettingsView() })
     }
 }
 
