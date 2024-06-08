@@ -14,4 +14,8 @@ class NavigationRouter: ObservableObject {
     func popToRoot() {
         path.removeLast(path.count)
     }
+    
+    func pop(n: Int) {
+        path.removeLast(n)
+    }
 }

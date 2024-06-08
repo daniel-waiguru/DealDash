@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProductInfoView: View {
     @StateObject var viewModel = ProductInfoViewModel()
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) private var dismiss
     let productId: Int
     var body: some View {
         ScrollView {
@@ -46,7 +48,8 @@ struct ProductInfoView: View {
                             .bold()
                         Spacer(minLength: 90)
                         PrimaryButton(text: "Add to cart") {
-                            
+                            modelContext.insert(data.toCartProduct(count: 1))
+                            dismiss()
                         }
                     }
                 }

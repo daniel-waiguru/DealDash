@@ -22,17 +22,21 @@ struct DealDashApp: App {
     @StateObject var navigationRouter: NavigationRouter = NavigationRouter()
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                switch sessionHandler.session {
-                case .loggedIn(_):
-                    ProductsView()
-                        .environmentObject(navigationRouter)
-                case .loggedOut:
-                    SignInView()
-                        .environmentObject(sessionHandler)
-                        .environmentObject(navigationRouter)
+            NavigationStack(
+                path: $navigationRouter.path,
+                root: {
+                    switch sessionHandler.session {
+                    case .loggedIn(_):
+                        ProductsView()
+                            .environmentObject(navigationRouter)
+                    case .loggedOut:
+                        SignInView()
+                            .environmentObject(sessionHandler)
+                            .environmentObject(navigationRouter)
+                    }
                 }
-            }
+            )
         }
+        .modelContainer(for: CartProduct.self)
     }
 }
