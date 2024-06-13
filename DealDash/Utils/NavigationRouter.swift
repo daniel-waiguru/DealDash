@@ -11,11 +11,20 @@ import SwiftUI
 class NavigationRouter: ObservableObject {
     @Published var path = NavigationPath()
     
+    public enum DealDashDestination: Codable, Hashable {
+        case cart, settings
+        case productInfo(productId: Int)
+    }
+    
     func popToRoot() {
         path.removeLast(path.count)
     }
     
-    func pop(n: Int) {
-        path.removeLast(n)
+    func navigate(to destination: DealDashDestination) {
+        path.append(destination)
+    }
+    
+    func navigateBack() {
+        path.removeLast()
     }
 }

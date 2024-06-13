@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductInfoView: View {
     @StateObject var viewModel = ProductInfoViewModel()
     @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var navigationRouter: NavigationRouter
     let productId: Int
     var body: some View {
         ScrollView {
@@ -49,7 +49,7 @@ struct ProductInfoView: View {
                         Spacer(minLength: 90)
                         PrimaryButton(text: "Add to cart") {
                             modelContext.insert(data.toCartProduct(count: 1))
-                            dismiss()
+                            navigationRouter.navigateBack()
                         }
                     }
                 }
@@ -71,14 +71,6 @@ struct ProductInfoView: View {
             await viewModel.getProductById(id: productId)
         }
         .padding()
-    }
-}
-
-private extension ProductInfoView {
-    var content: some View {
-        VStack {
-            
-        }
     }
 }
 
