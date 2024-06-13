@@ -28,6 +28,17 @@ struct DealDashApp: App {
                     switch sessionHandler.session {
                     case .loggedIn(_):
                         ProductsView()
+                            .navigationDestination(for: NavigationRouter.DealDashDestination.self) { destination in
+                                switch destination {
+                                case .settings:
+                                    SettingsView()
+                                case .cart:
+                                    CartView()
+                                case .productInfo(let productId):
+                                    ProductInfoView(productId: productId)
+                                        .environmentObject(navigationRouter)
+                                }
+                            }
                             .environmentObject(navigationRouter)
                     case .loggedOut:
                         SignInView()
