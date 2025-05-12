@@ -19,35 +19,35 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct DealDashApp: App {
     @StateObject var sessionHandler: SessionHandler = SessionHandler()
-    @StateObject var navigationRouter: NavigationRouter = NavigationRouter()
+    @StateObject var navController: NavController = NavController()
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack(
-                path: $navigationRouter.path,
+                path: $navController.path,
                 root: {
-                    switch sessionHandler.session {
-                    case .loggedIn(_):
-                        ProductsView()
-                            .navigationDestination(for: NavigationRouter.DealDashDestination.self) { destination in
-                                switch destination {
-                                case .settings:
-                                    SettingsView()
-                                case .cart:
-                                    CartView()
-                                case .productInfo(let productId):
-                                    ProductInfoView(productId: productId)
-                                        .environmentObject(navigationRouter)
-                                }
-                            }
-                            .environmentObject(navigationRouter)
-                    case .loggedOut:
-                        SignInView()
+                    startDestination
+                    .environmentObject(sessionHandler)
+                    .environmentObject(navController)
+                    .navigationDestination(for: DealDashNavDestination.self) { navDestination in
+                        navDestination
                             .environmentObject(sessionHandler)
-                            .environmentObject(navigationRouter)
+                            .environmentObject(navController)
                     }
+                    .preferredColorScheme(.light)
                 }
             )
         }
         .modelContainer(for: CartProduct.self)
+    }
+    
+    @ViewBuilder
+    private var startDestination: some View {
+        switch sessionHandler.session {
+        case .loggedIn(_):
+            ProductsView()
+        case .loggedOut:
+            SignInView()
+        }
     }
 }

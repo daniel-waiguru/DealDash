@@ -11,7 +11,7 @@ import SwiftData
 struct ProductsView: View {
     @StateObject private var viewModel = ProductsViewModel()
     @State private var showDetail: Bool = false
-    @EnvironmentObject var navigationRouter: NavigationRouter
+    @EnvironmentObject var navController: NavController
     private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
     @Query private var cartItems: [CartProduct]
     var body: some View {
@@ -19,7 +19,7 @@ struct ProductsView: View {
             LazyVGrid(columns: adaptiveColumn, spacing: 12) {
                 ForEach(viewModel.products, id: \.id) { product in
                     Button {
-                        navigationRouter.navigate(to: .productInfo(productId: product.id))
+                        navController.navigate(to: .productInfo(productId: product.id))
                     } label: {
                         ProductItem(product: product)
                     }
@@ -41,7 +41,7 @@ struct ProductsView: View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    navigationRouter.navigate(to: .cart)
+                    navController.navigate(to: .cart)
                 } label: {
                     Image(systemName: "cart.fill")
                 }
@@ -53,7 +53,7 @@ struct ProductsView: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    navigationRouter.navigate(to: .settings)
+                    navController.navigate(to: .settings)
                 } label: {
                     Image(systemName: "person.2.badge.gearshape.fill")
                 }
@@ -78,5 +78,5 @@ private extension ProductsView {
 
 #Preview {
     ProductsView()
-        .environmentObject(NavigationRouter())
+        .environmentObject(NavController())
 }
