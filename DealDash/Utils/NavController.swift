@@ -15,7 +15,7 @@ class NavController: ObservableObject {
         path.removeLast(path.count)
     }
     
-    func navigate(to destination: DealDashDestination) {
+    func navigate(to destination: DealDashNavDestination) {
         path.append(destination)
     }
     
@@ -24,7 +24,7 @@ class NavController: ObservableObject {
     }
 }
 
-public enum DealDashDestination: View, Hashable {
+public enum DealDashNavDestination: View, Hashable {
     case cart, settings
     case productInfo(productId: Int)
     

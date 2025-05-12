@@ -9,20 +9,20 @@ import Foundation
 @MainActor
 class ProductsViewModel: ObservableObject {
     @Published var hasError = false
-    @Published private (set) var error: DealDashError?
-    @Published private (set) var products = [Product]()
-    @Published private (set) var isLoading = false
+    @Published private(set) var state: ProductsUIState = .loading
     
     func getProducts() async {
-        isLoading = true
         do {
             let products = try await NetworkingService.shared.perform(.getProducts, type: [Product].self)
-            self.products = products
-            isLoading = false
+            state = .loaded(products: products)
         } catch {
-            hasError = true
-            self.error = DealDashError.system(error: error)
-            isLoading = false
+            state = .failed(error: DealDashError.system(error: error))
         }
     }
+}
+
+enum ProductsUIState {
+    case loaded(products: [Product])
+    case loading
+    case failed(error: DealDashError)
 }
