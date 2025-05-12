@@ -71,7 +71,7 @@ private struct ProductInfoViewInternal: View {
             }
             Spacer(minLength: 40)
             HStack {
-                Text(data.price, format: .currency(code: "Ksh"))
+                DealDashCurrencyText(price: data.price)
                     .font(.title2)
                     .bold()
                 Spacer(minLength: 90)

@@ -16,7 +16,6 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
-        .toolbarRole(.editor)
     }
 }
 

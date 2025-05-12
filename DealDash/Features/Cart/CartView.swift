@@ -14,14 +14,7 @@ struct CartView: View {
     let deliveryCharge = 40.00
     var body: some View {
         VStack {
-            ForEach(cartProducts, id: \.id) { cartProduct in
-                CartItemView(
-                    cartProduct: cartProduct,
-                    action: { action in
-                        onActionProduct(action: action, product: cartProduct)
-                    }
-                )
-            }
+            cartItemsListView
             Spacer()
             oderInfoView
             PrimaryButton(text: "Proceed to checkout", onClick: {})
@@ -30,6 +23,15 @@ struct CartView: View {
         .padding()
         .navigationTitle("Cart")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    try? modelContext.delete(model: CartProduct.self, includeSubclasses: true)
+                } label: {
+                    Text("Clear")
+                }
+            }
+        }
     }
     func onActionProduct(action: CartAction, product: CartProduct) {
         switch action {
@@ -40,6 +42,22 @@ struct CartView: View {
             if product.count == 1 { return }
             product.updateCount(newCount: product.count - 1)
             modelContext.insert(product)
+        }
+    }
+    
+    @ViewBuilder
+    private var cartItemsListView: some View {
+        if cartProducts.isEmpty {
+            InfoView(title: "No Product Found", description: "Add products to your cart")
+        } else {
+            ForEach(cartProducts, id: \.id) { cartProduct in
+                CartItemView(
+                    cartProduct: cartProduct,
+                    action: { action in
+                        onActionProduct(action: action, product: cartProduct)
+                    }
+                )
+            }
         }
     }
 }

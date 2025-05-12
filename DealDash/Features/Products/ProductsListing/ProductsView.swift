@@ -12,38 +12,22 @@ struct ProductsView: View {
     @StateObject private var viewModel = ProductsViewModel()
     @State private var showDetail: Bool = false
     @EnvironmentObject var navController: NavController
-    private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
     @Query private var cartItems: [CartProduct]
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: adaptiveColumn, spacing: 12) {
-                ForEach(viewModel.products, id: \.id) { product in
-                    Button {
-                        navController.navigate(to: .productInfo(productId: product.id))
-                    } label: {
-                        ProductItem(product: product)
-                    }
-                }
-            }
-            .padding()
-        }
-        .disabled(viewModel.isLoading)
-        .overlay {
-            if viewModel.isLoading {
-                ProgressView()
-            }
+        ScrollView(showsIndicators: false) {
+            productsView
         }
         .task {
             await viewModel.getProducts()
         }
-        .alert(isPresented: $viewModel.hasError, error: viewModel.error) {}
+        .padding()
         .navigationTitle("DealDash")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
                     navController.navigate(to: .cart)
                 } label: {
-                    Image(systemName: "cart.fill")
+                    Image(systemName: "bag.fill")
                 }
                 .overlay(alignment: .topTrailing) {
                     if cartItems.count > 0 {
@@ -55,7 +39,37 @@ struct ProductsView: View {
                 Button {
                     navController.navigate(to: .settings)
                 } label: {
-                    Image(systemName: "person.2.badge.gearshape.fill")
+                    Image(systemName: "gearshape.fill")
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var productsView: some View {
+        switch viewModel.state {
+        case .loaded(let products):
+            ProductsGrid(products: products, navController: navController)
+        case .loading:
+            ProgressView()
+        case .failed(let error):
+            ErrorView(error: error)
+        }
+    }
+}
+
+private struct ProductsGrid: View {
+    private let adaptiveColumn = [GridItem(.adaptive(minimum: 150))]
+    let products: [Product]
+    let navController: NavController
+    
+    var body: some View {
+        LazyVGrid(columns: adaptiveColumn, spacing: 12) {
+            ForEach(products, id: \.id) { product in
+                Button {
+                    navController.navigate(to: .productInfo(productId: product.id))
+                } label: {
+                    ProductItem(product: product)
                 }
             }
         }

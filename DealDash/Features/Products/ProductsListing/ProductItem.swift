@@ -41,7 +41,7 @@ struct ProductItem: View {
                         Text("(\(product.rating.count))")
                             .foregroundColor(.text)
                     }
-                    Text(product.price, format: .currency(code: "Ksh"))
+                    DealDashCurrencyText(price: product.price)
                         .fontWeight(.bold)
                         .foregroundColor(.text)
                 }
@@ -58,7 +58,7 @@ struct ProductItem: View {
             .padding(6)
             .background(.taintedBackground)
             .clipShape(Circle())
-            .position(x: 175, y: 15)
+            .position(x: 160, y: 15)
             
             
         }
@@ -68,5 +68,10 @@ struct ProductItem: View {
 }
 
 #Preview {
-    ProductItem(product: Product.previewProduct)
+    LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 12) {
+        ForEach(0...10, id: \.self) { product in
+            ProductItem(product: Product.previewProduct)
+        }
+    }
+    .padding()
 }

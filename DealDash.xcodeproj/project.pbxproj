@@ -40,6 +40,8 @@
 		B17E14422C1480E70006FAB2 /* CollectionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17E14412C1480E70006FAB2 /* CollectionUtils.swift */; };
 		B18657312BBFAF48009ADDCA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18657302BBFAF48009ADDCA /* SettingsView.swift */; };
 		B1A792F52DD2242800059926 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A792F42DD2242800059926 /* ErrorView.swift */; };
+		B1A792F72DD227D400059926 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A792F62DD227D400059926 /* InfoView.swift */; };
+		B1A792F92DD2307800059926 /* DealDashCurrencyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A792F82DD2307800059926 /* DealDashCurrencyText.swift */; };
 		B1D5C8272BB13494002D3EA5 /* ProductInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C8262BB13494002D3EA5 /* ProductInfoView.swift */; };
 		B1D5C8292BB134AE002D3EA5 /* ProductInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D5C8282BB134AE002D3EA5 /* ProductInfoViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +99,8 @@
 		B17E14412C1480E70006FAB2 /* CollectionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionUtils.swift; sourceTree = "<group>"; };
 		B18657302BBFAF48009ADDCA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B1A792F42DD2242800059926 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		B1A792F62DD227D400059926 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B1A792F82DD2307800059926 /* DealDashCurrencyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDashCurrencyText.swift; sourceTree = "<group>"; };
 		B1D5C8262BB13494002D3EA5 /* ProductInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoView.swift; sourceTree = "<group>"; };
 		B1D5C8282BB134AE002D3EA5 /* ProductInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +247,8 @@
 				B16997202B8253A200276991 /* PrimaryButton.swift */,
 				B17E143F2C1468FD0006FAB2 /* HLine.swift */,
 				B1A792F42DD2242800059926 /* ErrorView.swift */,
+				B1A792F62DD227D400059926 /* InfoView.swift */,
+				B1A792F82DD2307800059926 /* DealDashCurrencyText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				B17E14352C1448EA0006FAB2 /* CartProduct.swift in Sources */,
 				B17E14392C1460530006FAB2 /* CartViewModel.swift in Sources */,
 				B16997182B824B0400276991 /* SignInRequest.swift in Sources */,
+				B1A792F92DD2307800059926 /* DealDashCurrencyText.swift in Sources */,
 				B17E14372C145E8F0006FAB2 /* CartAction.swift in Sources */,
 				B12AE1BA2B8D95920062F93B /* ProductItem.swift in Sources */,
 				B17798082B845A690044400E /* SessionHandler.swift in Sources */,
@@ -486,6 +493,7 @@
 				B16997212B8253A200276991 /* PrimaryButton.swift in Sources */,
 				B17E14422C1480E70006FAB2 /* CollectionUtils.swift in Sources */,
 				B169971A2B824BD600276991 /* SignInViewModel.swift in Sources */,
+				B1A792F72DD227D400059926 /* InfoView.swift in Sources */,
 				B17E14332C1448500006FAB2 /* CartItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
