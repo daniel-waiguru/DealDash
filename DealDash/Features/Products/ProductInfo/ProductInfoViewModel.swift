@@ -8,11 +8,16 @@
 import Foundation
 @MainActor
 class ProductInfoViewModel: ObservableObject {
+    private let productsRepository: ProductsRepository
     var hasError: Bool = false
     @Published private(set) var state: ResultWrapper<Product> = .empty {
         didSet {
             updateHasError()
         }
+    }
+    
+    init(productsRepository: ProductsRepository) {
+        self.productsRepository = productsRepository
     }
     
     func updateHasError() {
@@ -26,9 +31,10 @@ class ProductInfoViewModel: ObservableObject {
             hasError = true
         }
     }
+    
     func getProductById(id: Int) async {
         do {
-            let product = try await NetworkingService.shared.perform(.getProduct(id: id), type: Product.self)
+            let product = try await productsRepository.getProductById(id: id)
             state = .success(data: product)
         } catch {
             state = .error(error: DealDashError.system(error: error))

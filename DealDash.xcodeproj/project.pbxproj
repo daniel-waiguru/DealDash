@@ -13,6 +13,9 @@
 		B107C0C72B8248BD0016FD7B /* DealDashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0C62B8248BD0016FD7B /* DealDashTests.swift */; };
 		B107C0D12B8248BD0016FD7B /* DealDashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0D02B8248BD0016FD7B /* DealDashUITests.swift */; };
 		B107C0D32B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B107C0D22B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift */; };
+		B112DC5D2DD4E07B00EB201A /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B112DC5C2DD4E07100EB201A /* ProductsRepository.swift */; };
+		B112DC602DD4E1A300EB201A /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B112DC5F2DD4E18900EB201A /* DIContainer.swift */; };
+		B112DC632DD4E59100EB201A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B112DC622DD4E58D00EB201A /* AuthRepository.swift */; };
 		B12AE1B52B8D90D30062F93B /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B42B8D90D30062F93B /* ProductsViewModel.swift */; };
 		B12AE1B82B8D92180062F93B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B72B8D92180062F93B /* Product.swift */; };
 		B12AE1BA2B8D95920062F93B /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE1B92B8D95920062F93B /* ProductItem.swift */; };
@@ -73,6 +76,9 @@
 		B107C0CC2B8248BD0016FD7B /* DealDashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DealDashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B107C0D02B8248BD0016FD7B /* DealDashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDashUITests.swift; sourceTree = "<group>"; };
 		B107C0D22B8248BD0016FD7B /* DealDashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B112DC5C2DD4E07100EB201A /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
+		B112DC5F2DD4E18900EB201A /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		B112DC622DD4E58D00EB201A /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		B12AE1B42B8D90D30062F93B /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		B12AE1B72B8D92180062F93B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B12AE1B92B8D95920062F93B /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		B107C0B42B8248BC0016FD7B /* DealDash */ = {
 			isa = PBXGroup;
 			children = (
+				B112DC5E2DD4E18100EB201A /* DI */,
 				B17798042B8459FB0044400E /* Utils */,
 				B16997252B825C1C00276991 /* Data */,
 				B107C0DF2B8249760016FD7B /* Features */,
@@ -206,11 +213,36 @@
 		B107C0E02B82497D0016FD7B /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				B112DC612DD4E58500EB201A /* Repositories */,
 				B16997162B824AE600276991 /* Models */,
 				B16997142B824A4E00276991 /* SignInView.swift */,
 				B16997192B824BD600276991 /* SignInViewModel.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		B112DC5B2DD4E06700EB201A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B112DC5C2DD4E07100EB201A /* ProductsRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		B112DC5E2DD4E18100EB201A /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				B112DC5F2DD4E18900EB201A /* DIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		B112DC612DD4E58500EB201A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				B112DC622DD4E58D00EB201A /* AuthRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		B12AE1B62B8D92030062F93B /* Models */ = {
@@ -273,6 +305,7 @@
 		B16EA54A2B8463E400F7D830 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				B112DC5B2DD4E06700EB201A /* Repositories */,
 				B1D5C8252BB13479002D3EA5 /* ProductInfo */,
 				B1D5C8242BB1345D002D3EA5 /* ProductsListing */,
 				B12AE1B62B8D92030062F93B /* Models */,
@@ -465,16 +498,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18657312BBFAF48009ADDCA /* SettingsView.swift in Sources */,
+				B112DC602DD4E1A300EB201A /* DIContainer.swift in Sources */,
 				B16EA54C2B8463F400F7D830 /* ProductsView.swift in Sources */,
 				B16997152B824A4F00276991 /* SignInView.swift in Sources */,
 				B1D5C8292BB134AE002D3EA5 /* ProductInfoViewModel.swift in Sources */,
 				B12AE1B52B8D90D30062F93B /* ProductsViewModel.swift in Sources */,
 				B1A792F52DD2242800059926 /* ErrorView.swift in Sources */,
 				B17E14402C1468FD0006FAB2 /* HLine.swift in Sources */,
+				B112DC5D2DD4E07B00EB201A /* ProductsRepository.swift in Sources */,
 				B169971D2B824D5D00276991 /* PasswordTextField.swift in Sources */,
 				B17E14312C1448360006FAB2 /* CartView.swift in Sources */,
 				B1D5C8272BB13494002D3EA5 /* ProductInfoView.swift in Sources */,
 				B169971F2B82521700276991 /* ITextField.swift in Sources */,
+				B112DC632DD4E59100EB201A /* AuthRepository.swift in Sources */,
 				B12AE1B82B8D92180062F93B /* Product.swift in Sources */,
 				B107C0B62B8248BC0016FD7B /* DealDashApp.swift in Sources */,
 				B16997272B825C4700276991 /* NetworkingService.swift in Sources */,
@@ -591,6 +627,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -646,6 +683,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -8,7 +8,7 @@
 import Foundation
 
 enum ApiEndpoint {
-    case signIn(data: Data?)
+    case signIn
     case getProducts
     case getProduct(id: Int)
 }
@@ -24,15 +24,6 @@ extension ApiEndpoint {
             return "products"
         case .getProduct(let id):
             return "products/\(id)"
-        }
-    }
-    var methodType: MethodType {
-        switch self {
-        case .signIn(let signRequest):
-            return .POST(data: signRequest)
-        case .getProducts, .getProduct:
-            return .GET
-        
         }
     }
 
@@ -53,10 +44,7 @@ extension ApiEndpoint {
         return urlComponents.url
     }
 }
-
-extension ApiEndpoint {
-    enum MethodType {
-        case GET
-        case POST(data: Data?)
-    }
+enum HTTPMethodType: String {
+    case GET
+    case POST
 }
