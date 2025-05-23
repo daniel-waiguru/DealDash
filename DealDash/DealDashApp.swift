@@ -21,6 +21,10 @@ struct DealDashApp: App {
     @StateObject var sessionHandler: SessionHandler = SessionHandler()
     @StateObject var navController: NavController = NavController()
     
+    init() {
+        registerDependencyGraph()
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationStack(
@@ -49,5 +53,16 @@ struct DealDashApp: App {
         case .loggedOut:
             SignInView()
         }
+    }
+    
+    private func registerDependencyGraph() {
+        let container = DIContainer.shared
+        let authRepository: AuthRepository = AuthRepositoryImpl()
+        let productsRepository: ProductsRepository = ProductsRepositoryImpl()
+        container.register(authRepository)
+        container.register(productsRepository)
+        container.register(SignInViewModel(authRepository: container.resolve()))
+        container.register(ProductsViewModel(productsRepository: container.resolve()))
+        container.register(ProductInfoViewModel(productsRepository: container.resolve()))
     }
 }

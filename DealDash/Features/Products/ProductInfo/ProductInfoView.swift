@@ -9,12 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct ProductInfoView: View {
-    @StateObject var viewModel = ProductInfoViewModel()
+    @ObservedObject private var viewModel: ProductInfoViewModel
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var navController: NavController
     let productId: Int
+    init(productId: Int, viewModel: ProductInfoViewModel = DIContainer.shared.resolve()) {
+        self.productId = productId
+        self.viewModel = viewModel
+    }
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             productInfoView
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -23,7 +27,7 @@ struct ProductInfoView: View {
         .task {
             await viewModel.getProductById(id: productId)
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     @ViewBuilder
@@ -33,7 +37,7 @@ struct ProductInfoView: View {
             ProductInfoViewInternal(data: data, modelContext: modelContext, navController: navController)
                 .navigationTitle(data.title)
         case .loading,.empty:
-            ProductsView()
+            ProgressView()
         case .error(error: let error):
             ErrorView(error: error)
         }
@@ -85,5 +89,5 @@ private struct ProductInfoViewInternal: View {
 }
 
 #Preview {
-    ProductInfoView(productId: 1)
+    ProductInfoView(productId: 1, viewModel: ProductInfoViewModel(productsRepository: PreviewProductsRepository()))
 }

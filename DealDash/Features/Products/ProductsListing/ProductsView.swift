@@ -9,17 +9,23 @@ import SwiftUI
 import SwiftData
 
 struct ProductsView: View {
-    @StateObject private var viewModel = ProductsViewModel()
+    @StateObject var viewModel: ProductsViewModel
     @State private var showDetail: Bool = false
     @EnvironmentObject var navController: NavController
     @Query private var cartItems: [CartProduct]
+    
+    init(viewModel: ProductsViewModel = DIContainer.shared.resolve()) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: false) {
             productsView
         }
         .task {
             await viewModel.getProducts()
         }
+        .refreshable { await viewModel.getProducts() }
         .padding()
         .navigationTitle("DealDash")
         .toolbar {
@@ -64,15 +70,21 @@ private struct ProductsGrid: View {
     let navController: NavController
     
     var body: some View {
-        LazyVGrid(columns: adaptiveColumn, spacing: 12) {
-            ForEach(products, id: \.id) { product in
-                Button {
-                    navController.navigate(to: .productInfo(productId: product.id))
-                } label: {
-                    ProductItem(product: product)
+        if products.isEmpty {
+            InfoView(title: "No Products", description: "Products will appear here")
+        
+        } else {
+            LazyVGrid(columns: adaptiveColumn, spacing: 12) {
+                ForEach(products, id: \.id) { product in
+                    Button {
+                        navController.navigate(to: .productInfo(productId: product.id))
+                    } label: {
+                        ProductItem(product: product)
+                    }
                 }
             }
         }
+        
     }
 }
 private extension ProductsView {
@@ -91,6 +103,8 @@ private extension ProductsView {
 }
 
 #Preview {
-    ProductsView()
-        .environmentObject(NavController())
+    NavigationView {
+        ProductsView(viewModel: ProductsViewModel(productsRepository: PreviewProductsRepository()))
+            .environmentObject(NavController())
+    }
 }

@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct SignInView: View {
-    @StateObject private var viewModel: SignInViewModel = SignInViewModel()
+    @ObservedObject private var viewModel: SignInViewModel
     @EnvironmentObject var sessionHandler: SessionHandler
+    
+    init(viewModel: SignInViewModel =  DIContainer.shared.resolve()) {
+        self.viewModel = viewModel
+    }
     var body: some View {
         VStack(spacing: 16) {
             ITextField(hint: "Username", keyboardType: .alphabet, text: $viewModel.signInRequest.username)

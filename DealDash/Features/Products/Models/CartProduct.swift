@@ -34,5 +34,5 @@ final class CartProduct {
 }
 
 extension CartProduct {
-    static var previewCartProduct = Product.previewProduct.toCartProduct(count: 2)
+    static var previewCartProduct = mockProduct(id: 1).toCartProduct(count: 2)
 }

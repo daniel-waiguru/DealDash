@@ -70,7 +70,7 @@ struct ProductItem: View {
 #Preview {
     LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 12) {
         ForEach(0...10, id: \.self) { product in
-            ProductItem(product: Product.previewProduct)
+            ProductItem(product: mockProduct())
         }
     }
     .padding()

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 @MainActor
 class SignInViewModel: ObservableObject {
+    private let authRepository: AuthRepository
     @Published var signInRequest = SignInRequest()
     
     var hasError: Bool = false
@@ -16,6 +17,10 @@ class SignInViewModel: ObservableObject {
         didSet {
             updateHasError()
         }
+    }
+    
+    init(authRepository: AuthRepository) {
+        self.authRepository = authRepository
     }
     
     func updateHasError() {
@@ -29,6 +34,8 @@ class SignInViewModel: ObservableObject {
             hasError = true
         }
     }
+    
+ 
     func signIn() async {
         state = .loading
         if signInRequest.username.isEmpty {
@@ -41,7 +48,7 @@ class SignInViewModel: ObservableObject {
         }
         do {
             let request = try JSONEncoder().encode(signInRequest)
-            let response = try await NetworkingService.shared.perform(.signIn(data: request), type: SignInResponse.self)
+            let response = try await authRepository.signIn(request: request)
             UserDefaults.standard.setValue(response.token, forKey: Constants.ACCESS_TOKEN_KEY)
             UserDefaults.standard.setValue(signInRequest.username, forKey: Constants.USERNAME_KEY)
             state = .success(data: signInRequest.username)
